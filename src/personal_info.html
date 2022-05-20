@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../dist/output.css" rel="stylesheet">
+  <script src="../dist/bundle.js" defer></script> 
 </head>
 <body>
   <div class="h-screen flex flex-col w-full bg-[#f6edff]">
@@ -15,7 +16,7 @@
       </div>
     </div>
     <div class="flex flex-1 justify-center mt-14">
-      <form class="flex flex-col justify-between w-form-sm mx-5 sm:w-form" action="./residence.html">
+      <form x-data="form" @focusout="change" @input="change" @submit="submit" class="flex flex-col justify-between w-form-sm mx-5 sm:w-form" action="./residence.html">
         <div>
           <div>
             <img src="assets/user.png" class="w-12" alt="">
@@ -37,31 +38,35 @@
                 <h6 class="text-primary text-sm font-semibold mt-[2px]">Month</h6>
                 <div class="border mt-[2px] w-14 border-gray-300 px-3 py-2 shadow-sm outline-0 bg-white">
                     <label for="mm" class="block text-xs font-medium text-gray-400">MM</label>
-                    <input type="text" name="mm" id="mm" class="block font-semibold w-10 border-0 p-0 text-primary placeholder-gray-500 ring-0 text-base outline-0">
+                    <input type="number" x-model="birth_month" name="mm" id="mm" class="block font-semibold w-10 border-0 p-0 text-primary placeholder-gray-500 ring-0 text-base outline-0">
                 </div>
               </div>
               <div class="mt-5 w-14">
                 <h6 class="text-primary text-sm font-semibold mt-[2px]">Day</h6>
                 <div class="border mt-[2px] w-14 border-gray-300 px-3 py-2 shadow-sm outline-0 bg-white">
                     <label for="dd" class="block text-xs font-medium text-gray-400">DD</label>
-                    <input type="text" name="dd" id="dd" class="block font-semibold w-10 border-0 p-0 text-primary placeholder-gray-500 ring-0 text-base outline-0">
+                    <input type="number" x-model="birth_date" name="dd" id="dd" class="block font-semibold w-10 border-0 p-0 text-primary placeholder-gray-500 ring-0 text-base outline-0">
                 </div>
               </div>
               <div class="mt-5 w-24">
                 <h6 class="text-primary text-sm font-semibold mt-[2px]">Year</h6>
                 <div class="border mt-[2px] w-24 rounded-r-lg border-gray-300 px-3 py-2 shadow-sm outline-0 bg-white">
                     <label for="dd" class="block text-xs font-medium text-gray-400">YYYY</label>
-                    <input type="text" name="dd" id="dd" class="block font-semibold w-10 border-0 p-0 text-primary placeholder-gray-500 ring-0 text-base outline-0">
+                    <input type="number" x-model="birth_year" name="dd" id="dd" class="block font-semibold w-16 border-0 p-0 text-primary placeholder-gray-500 ring-0 text-base outline-0">
                 </div>
               </div>
           </div>
-          <div class="border border-gray-300 rounded-md mt-6 px-3 py-2 shadow-sm bg-white">
-            <label for="email" class="block text-xs font-medium text-gray-400">Email address</label>
-            <input type="text" name="email" id="email" class="block outline-0 ring-0 font-semibold w-full border-0 p-0 text-primary placeholder-gray-500 text-base">
+          <div class="mt-6">
+            <input id="email" x-model="email" class="font-semibold text-primary floating border border-gray-300 rounded-md bg-white floating__input outline-0 text-sm text-primary" name="last_name" type="text" placeholder="Email address" />
+            <label for="email" class="floating__label text-sm" data-content="Email address">
+              <span class="hidden--visually">
+                Email address
+              </span>
+            </label>
           </div>
         </div>
         <div class="w-full text-center mt-5 mb-20 px-5">
-          <input type="submit" class="w-48 text-lg rounded text-white font-bold h-12 bg-primary m-auto" value="Next">
+          <input type="submit" :disabled="person_disabled" :class="person_disabled? 'w-48  text-lg opacity-[0.12] rounded text-white font-bold h-12 bg-gray-700 m-auto': 'cursor-pointer hover:bg-hover w-48  text-lg rounded text-white font-bold h-12 bg-primary m-auto'" value="Next">
         </div>
       </form>
     </div>

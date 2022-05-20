@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../dist/output.css" rel="stylesheet">
+  <script src="../dist/bundle.js" defer></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/lightpick@latest/lightpick.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/lightpick@latest/css/lightpick.css">
 </head>
 <body>
   <div class="h-screen flex flex-col w-full bg-[#f6edff]">
@@ -14,9 +18,10 @@
         </a>
       </div>
     </div>
+    
     <div class="flex-1 flex justify-center mt-14">
-      <form class="flex flex-col justify-between w-form-sm mx-5 sm:w-form" action="./travelers_count.html">
-        <div>
+      <form x-data="form" @focusout="change" @input="change" @submit="submit" class="flex flex-col justify-between w-form-sm mx-5 sm:w-form" action="./travelers_count.html">
+        <div class="relative">
           <div>
             <img src="assets/user.png" class="w-12" alt="">
           </div>
@@ -27,23 +32,21 @@
           <div class="flex justify-between mt-5">
             <div class="w-1/2">
               <h6 class="text-primary text-sm font-semibold mt-[2px]">From</h6>
-              <div class="rounded-l-lg py-4 px-4 bg-white border border-gray-300">
-                <input type="text" name="destiantion" id="destiantion" class="shadow-sm ring-0 outline-0 text-primary block w-full sm:text-sm border-gray-300 rounded-md" placeholder="mm/dd/yyyy">
-              </div>
+              <input type="text" @focusout="datefocusout" @click="datefocusin" x-model="start_date" name="fromDate" id="fromdate" class="font-semibold py-4 px-4 bg-white border outline-0 text-primary block w-full sm:text-sm border-gray-300 rounded-l-md" placeholder="mm/dd/yyyy">
             </div>
             <div class="w-1/2">
               <h6 class="text-primary text-sm font-semibold mt-[2px]">Until</h6>
-              <div class="rounded-r-lg py-4 px-4 bg-white border border-gray-300">
-                <input type="text" name="destiantion" id="destiantion" class="shadow-sm ring-0 outline-0 text-primary block w-full sm:text-sm border-gray-300 rounded-md" placeholder="mm/dd/yyyy">
-              </div>
+              <input type="text" @focusout="datefocusout" @click="datefocusin" x-model="end_date" name="untildate" id="untildate" class="font-semibold py-4 px-4 bg-white border outline-0 text-primary block w-full sm:text-sm border-gray-300 rounded-r-md" placeholder="mm/dd/yyyy">
             </div>
           </div>
+          <input type="text" id="demo" class="form-control w-0 h-0 form-control-sm">
         </div>
         <div class="w-full text-center mt-5 mb-20 px-5">
-          <input type="submit" class="w-48 text-lg rounded text-white font-bold h-12 bg-primary m-auto" value="Next">
+          <input type="submit" id="date_button" class="cursor-pointer hover:bg-hover w-48  text-lg rounded text-white font-bold h-12 bg-primary m-auto" value="Next">
         </div>
       </form>
     </div>
   </div>
+  
 </body>
 </html>

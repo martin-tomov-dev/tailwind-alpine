@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../dist/output.css" rel="stylesheet">
+  <script src="../dist/bundle.js" defer></script>
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 </head>
 <body>
@@ -16,7 +17,7 @@
       </div>
     </div>
     <div class="flex-1 flex justify-center mt-14">
-      <form class="flex flex-col justify-between w-form-sm mx-5 sm:w-form" action="./personal_info.html">
+      <form x-data="form" @focusout="change" @input="change" @change="change" @submit="submit" class="flex flex-col justify-between w-form-sm mx-5 sm:w-form" action="./personal_info.html">
         <div>
           <div>
             <img src="assets/user.png" class="w-12" alt="">
@@ -29,19 +30,19 @@
               <div class="space-y-4">
                 <div class="flex items-center p-4 border border-gray-300 rounded bg-white">
                   <label class="container block relative text-gray-400 text-sm pl-11">Goin' solo
-                    <input type="radio" checked="checked" class="absolute opacity-0" name="radio">
+                    <input type="radio" x-model="travel_num" value="1" class="absolute opacity-0" name="radio">
                     <span class="checkmark border-2 border-gray-300 absolute top-0 left-0 w-6 h-6 bg-white rounded-full after:top-1 after:left-1 after:w-3 after:h-3 after:bg-primary after:rounded-full"></span>
                   </label>
                 </div>
                 <div class="flex items-center p-4 border border-gray-300 rounded bg-white">
                   <label class="container block relative text-gray-400 text-sm pl-11">We're two
-                    <input type="radio" name="radio" class="absolute opacity-0">
+                    <input type="radio" x-model="travel_num" value="2" name="radio" class="absolute opacity-0">
                     <span class="checkmark border-2 border-gray-300 absolute top-0 left-0 w-6 h-6 bg-white rounded-full after:top-1 after:left-1 after:w-3 after:h-3 after:bg-primary after:rounded-full"></span>
                   </label>
                 </div>
                 <div class="flex items-center p-4 border border-gray-300 rounded bg-white">
                   <label class="container block relative text-gray-400 text-sm pl-11">We're a brunch
-                    <input type="radio" name="radio" class="absolute opacity-0">
+                    <input type="radio" x-model="travel_num" value="3" name="radio" class="absolute opacity-0">
                     <span class="checkmark border-2 border-gray-300 absolute top-0 left-0 w-6 h-6 bg-white rounded-full after:top-1 after:left-1 after:w-3 after:h-3 after:bg-primary after:rounded-full"></span>
                   </label>
                 </div>
@@ -50,7 +51,7 @@
           </div>
         </div>
         <div class="w-full text-center mt-5 mb-20 px-5">
-          <input type="submit" class="w-48 text-lg rounded text-white font-bold h-12 bg-primary m-auto" value="Next">
+          <input type="submit" :disabled="travel_disabled" :class="travel_disabled? 'w-48  text-lg opacity-[0.12] rounded text-white font-bold h-12 bg-gray-700 m-auto': 'cursor-pointer hover:bg-hover w-48  text-lg rounded text-white font-bold h-12 bg-primary m-auto'" value="Next">
         </div>
       </form>
     </div>

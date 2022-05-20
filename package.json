@@ -1,10 +1,13 @@
 {
   "scripts": {
     "build-css": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
-    "alpinjs-dev": "npx esbuild index.js --outfile=dist/bundle.js --bundle"
+    "alpinjs-dev": "npx esbuild index.js --outfile=dist/bundle.js --bundle --watch"
   },
   "dependencies": {
+    "@themesberg/tailwind-datepicker": "^1.1.0",
     "alpinejs": "^3.10.2",
-    "esbuild": "^0.14.39"
+    "esbuild": "^0.14.39",
+    "litepicker": "^2.0.12",
+    "tw-elements": "^1.0.0-alpha12"
   }
 }

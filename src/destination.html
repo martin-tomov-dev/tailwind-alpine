@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../dist/output.css" rel="stylesheet">
-  <script src="../dist/bundle.js" defer></script>
+  <script src="../dist/bundle.js" defer></script> 
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ_35G7XTuVQ7UojZ2_8UK7uuxQBaSGQQ&libraries=places"></script>
 </head>
 <body>
   <div class="h-screen flex flex-col w-full bg-[#f6edff]">
@@ -16,7 +17,7 @@
       </div>
     </div>
     <div class="flex-1 flex justify-center mt-14">
-      <form x-data="form" class="flex flex-col justify-between w-form-sm mx-5 sm:w-form" action="./dates.html">
+      <form x-data="form" @focusout="change" @input="change" @submit="submit" class="flex flex-col justify-between w-form-sm mx-5 sm:w-form" action="./dates.html">
         <div>
           <div>
             <img src="assets/user.png" class="w-12" alt="">
@@ -27,15 +28,33 @@
             Where are you going?
           </h2>
           <h6 class="text-primary mt-2 text-sm font-semibold sm:w-80">Traveling to multiple destiantions? Plug them all in here.</h6>
-          <div class="mt-11 py-4 px-6 bg-white border mr-3 border-gray-300 rounded-md mx-3">
-            <input type="text" name="destiantion" id="destiantion" class="shadow-sm ring-0 outline-0 text-primary block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Where are you going?">
-          </div>
+          <input type="text" name="destiantion" x-model="destination" id="destiantion" class="mt-11 py-4 px-6 bg-white border mr-3 mx-3 shadow-sm ring-0 outline-0 text-primary block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Where are you going?">
         </div>
         <div class="w-full text-center mt-5 mb-20 px-5">
-          <input type="submit" class="w-48 text-lg rounded text-white font-bold h-12 bg-primary m-auto" value="Next">
+          <input type="submit" :disabled="dest_disabled" :class="dest_disabled? 'w-48  text-lg opacity-[0.12] rounded text-white font-bold h-12 bg-gray-700 m-auto': 'cursor-pointer hover:bg-hover w-48  text-lg rounded text-white font-bold h-12 bg-primary m-auto'" value="Next">
         </div>
       </form>
     </div>
   </div>
+  <script>
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    function initialize() {
+
+        var input = document.getElementById('destiantion');
+        var options = {
+          types: ['(cities)'],
+          componentRestrictions: {country: "us"}
+        }
+
+        var autocomplete = new google.maps.places.Autocomplete(input, options);
+
+        autocomplete.addListener('place_changed', function () {
+          var place = autocomplete.getPlace();
+          sessionStorage.setItem("destination", place.formatted_address);
+        });
+
+    }
+  </script>
 </body>
 </html>

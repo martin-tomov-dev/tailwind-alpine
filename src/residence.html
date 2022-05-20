@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../dist/output.css" rel="stylesheet">
+  <script src="../dist/bundle.js" defer></script> 
 </head>
 <body>
   <div class="h-screen flex flex-col w-full bg-[#f6edff]">
@@ -15,7 +16,7 @@
       </div>
     </div>
     <div class="flex flex-1 justify-center mt-14">
-      <form class="flex flex-col justify-between w-form-sm mx-5 sm:w-form" action="./residence_next.html">
+      <form x-data="form" @focusout="change" @input="change" @submit="submit" class="flex flex-col justify-between w-form-sm mx-5 sm:w-form" action="./residence_next.html">
         <div>
           <div>
             <img src="assets/user.png" class="w-12" alt="">
@@ -29,16 +30,12 @@
               <div class="w-20 rounded h-1 bg-primary mx-2"></div>
           </div>
           <div class="flex">
-            <div class="mt-11 flex-1 py-4 px-6 bg-white border mr-4 border-gray-300 rounded-md">
-                <input type="text" name="destiantion" id="destiantion" class="shadow-sm ring-0 outline-0 text-primary block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Street address, city, state">
-            </div>
-            <div class="mt-11 py-4 w-[90px] px-6 bg-white border border-gray-300 rounded-md">
-                <input type="text" name="destiantion" id="destiantion" class="shadow-sm ring-0 outline-0 text-primary block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Apt #">
-            </div>
+            <input type="text" x-model="street" name="street" id="street" class="mt-11 flex-1 py-4 px-6 bg-white border mr-4 border-gray-300 rounded-md font-semibold shadow-sm ring-0 outline-0 text-primary block w-full sm:text-sm " placeholder="Street address, city, state">
+            <input type="text" x-model="apt" name="apt" id="apt" class="mt-11 py-4 w-[90px] px-6 bg-white border border-gray-300 rounded-md font-semibold shadow-sm ring-0 outline-0 text-primary block w-full sm:text-sm" placeholder="Apt #">
           </div>
         </div>
         <div class="w-full text-center mt-5 mb-20 px-5">
-          <input type="submit" class="w-48 text-lg rounded text-white font-bold h-12 bg-primary m-auto" value="Next traveler">
+          <input type="submit" :disabled="residence_disabled" :class="residence_disabled? 'w-48  text-lg opacity-[0.12] rounded text-white font-bold h-12 bg-gray-700 m-auto': 'cursor-pointer hover:bg-hover w-48  text-lg rounded text-white font-bold h-12 bg-primary m-auto'" value="Next traveler">
         </div>
       </form>
     </div>

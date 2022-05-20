@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../dist/output.css" rel="stylesheet">
+  <script src="../dist/bundle.js" defer></script> 
 </head>
 <body>
   <div class="h-screen flex flex-col w-full bg-[#f6edff]">
@@ -15,7 +16,7 @@
       </div>
     </div>
     <div class="flex flex-1 justify-center mt-14">
-      <form class="flex flex-col justify-between w-form-sm mx-5 sm:w-form" action="./cost.html">
+      <form x-data="form" @focusout="change" @input="change" @submit="submit" class="flex flex-col justify-between w-form-sm mx-5 sm:w-form" action="./cost.html">
         <div>
           <div>
             <img src="assets/user.png" class="w-12" alt="">
@@ -24,12 +25,8 @@
             Let's get everyone covered!
           </h2>
           <div class="flex mt-6">
-            <div class="w-1/2 py-4 px-6 bg-white border mr-2 border-gray-300 rounded-md">
-                <input type="text" name="destiantion" id="destiantion" class="shadow-sm ring-0 outline-0 text-primary block w-full sm:text-sm border-gray-300 rounded-md" placeholder="First name">
-            </div>
-            <div class="w-1/2 py-4 px-6 bg-white border ml-2 border-gray-300 rounded-md">
-                <input type="text" name="destiantion" id="destiantion" class="shadow-sm ring-0 outline-0 text-primary block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Last name">
-            </div>
+            <input type="text" x-model="firstName" name="firstName" id="firstName" class="font-semibold w-1/2 py-4 px-6 bg-white border mr-2 shadow-sm ring-0 outline-0 text-primary block w-full sm:text-sm border-gray-300 rounded-md" placeholder="First name">
+            <input type="text" x-model="lastName" name="lastName" id="lastName" class="font-semibold w-1/2 py-4 px-6 bg-white border ml-2 shadow-sm ring-0 outline-0 text-primary block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Last name">
           </div>
           <div class="flex">
             <div class="p-[17px] mt-6 flex-1 flex border border-gray-300 rounded-l-lg bg-white">
@@ -40,30 +37,28 @@
               <h6 class="text-primary text-sm font-semibold mt-[2px]">Month</h6>
               <div class="border mt-[2px] w-14 border-gray-300 px-3 py-2 shadow-sm outline-0 bg-white">
                   <label for="mm" class="block text-xs font-medium text-gray-400">MM</label>
-                  <input type="text" name="mm" id="mm" class="block font-semibold w-10 border-0 p-0 text-primary placeholder-gray-500 ring-0 text-base outline-0">
+                  <input type="text" x-model="birth_month" name="mm" id="mm" class="block font-semibold w-10 border-0 p-0 text-primary placeholder-gray-500 ring-0 text-base outline-0">
               </div>
             </div>
             <div class="w-14">
               <h6 class="text-primary text-sm font-semibold mt-[2px]">Day</h6>
               <div class="border mt-[2px] w-14 border-gray-300 px-3 py-2 shadow-sm outline-0 bg-white">
                   <label for="dd" class="block text-xs font-medium text-gray-400">DD</label>
-                  <input type="text" name="dd" id="dd" class="block font-semibold w-10 border-0 p-0 text-primary placeholder-gray-500 ring-0 text-base outline-0">
+                  <input type="text" x-model="birth_date" name="dd" id="dd" class="block font-semibold w-10 border-0 p-0 text-primary placeholder-gray-500 ring-0 text-base outline-0">
               </div>
             </div>
             <div class="w-24">
               <h6 class="text-primary text-sm font-semibold mt-[2px]">Year</h6>
               <div class="border mt-[2px] w-24 rounded-r-lg border-gray-300 px-3 py-2 shadow-sm outline-0 bg-white">
                   <label for="dd" class="block text-xs font-medium text-gray-400">YYYY</label>
-                  <input type="text" name="dd" id="dd" class="block font-semibold w-10 border-0 p-0 text-primary placeholder-gray-500 ring-0 text-base outline-0">
+                  <input type="text" x-model="birth_year" name="dd" id="dd" class="block font-semibold w-10 border-0 p-0 text-primary placeholder-gray-500 ring-0 text-base outline-0">
               </div>
             </div>
           </div>
-          <div class="mt-6 py-4 px-6 bg-white border border-gray-300 rounded-md">
-            <input type="text" name="destiantion" id="destiantion" class="shadow-sm ring-0 outline-0 text-primary block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Email address(optional)">
-          </div>
+          <input type="text" x-model="email" name="email" id="email" class="font-semibold mt-6 py-4 px-6 bg-white border shadow-sm ring-0 outline-0 text-primary block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Email address(optional)">
         </div>
         <div class="w-full text-center mt-5 mb-20 px-5">
-          <input type="submit" class="w-48 text-lg rounded text-white font-bold h-12 bg-primary m-auto" value="Next traveler">
+          <input type="submit" class="cursor-pointer hover:bg-hover w-48 text-lg rounded text-white font-bold h-12 bg-primary m-auto" value="Next traveler">
         </div>
       </form>
     </div>

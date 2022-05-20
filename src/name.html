@@ -29,16 +29,16 @@
             First, what's your name?
           </h2>
           <div class="flex justify-between mt-14">
-            <div class="mr-3 floating border border-gray-300 rounded-md bg-white">
-              <input id="first_name" x-model="firstName" class="floating__input outline-0 text-sm text-primary" name="first_name" type="text" placeholder="First name" />
+            <div class="mr-3 ">
+              <input id="first_name" x-model="firstName" class="floating border border-gray-300 rounded-md bg-white floating__input outline-0 text-sm text-primary" name="first_name" type="text" placeholder="First name" />
               <label for="first_name" class="floating__label text-sm" data-content="First name">
                 <span class="hidden--visually">
                   First name
                 </span>
               </label>
             </div>
-            <div class="ml-3 floating border border-gray-300 rounded-md bg-white">
-              <input id="last_name" x-model="lastName" class="floating__input outline-0 text-sm text-primary" name="last_name" type="text" placeholder="Last name" />
+            <div class="ml-3 ">
+              <input id="last_name" x-model="lastName" class="floating border border-gray-300 rounded-md bg-white floating__input outline-0 text-sm text-primary" name="last_name" type="text" placeholder="Last name" />
               <label for="last_name" class="floating__label text-sm" data-content="Last name">
                 <span class="hidden--visually">
                   Last name
@@ -48,7 +48,7 @@
           </div>
         </div>
         <div class="w-full text-center mt-5 mb-20 px-5">
-          <input type="submit" class="w-48 cursor-pointer hover:bg-hover text-lg rounded text-white font-bold h-12 bg-primary m-auto" value="Next">
+          <input type="submit" :disabled="name_disabled" :class="name_disabled? 'w-48  text-lg opacity-[0.12] rounded text-white font-bold h-12 bg-gray-700 m-auto': 'cursor-pointer hover:bg-hover w-48  text-lg rounded text-white font-bold h-12 bg-primary m-auto'" value="Next">
         </div>
       </form>
     </div>

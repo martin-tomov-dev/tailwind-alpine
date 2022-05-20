@@ -70,18 +70,18 @@ function form() {
             if (this.firstName != '' && this.firstName != null && this.lastName != '' && this.lastName != null) {
                 this.name_disabled = false;
             }
-            // if (this.destination != '' && this.dest_disabled != null) {
-            //     this.dest_disabled = false;
-            // }
-            // if (this.street != '' && this.street != null && this.apt != '' && this.apt != null) {
-            //     this.residence_disabled = false;
-            // }
-            // if (this.email != '' && this.email != null && this.birth_date != '' && this.birth_date != null && this.birth_month != '' && this.birth_month != null && this.birth_year != '' && this.birth_year != null) {
-            //     this.person_disabled = false;
-            // }
-            // if (this.street != '' && this.street != null && this.apt != '' && this.apt != null && this.city != '' && this.city != null && this.state != '' && this.state != null && this.zipcode != '' && this.zipcode != null) {
-            //     this.residence_next_disabled = false;
-            // }
+            if (this.destination != '' && this.dest_disabled != null) {
+                this.dest_disabled = false;
+            }
+            if (this.street != '' && this.street != null && this.apt != '' && this.apt != null) {
+                this.residence_disabled = false;
+            }
+            if (this.email != '' && this.email != null && this.birth_date != '' && this.birth_date != null && this.birth_month != '' && this.birth_month != null && this.birth_year != '' && this.birth_year != null) {
+                this.person_disabled = false;
+            }
+            if (this.street != '' && this.street != null && this.apt != '' && this.apt != null && this.city != '' && this.city != null && this.state != '' && this.state != null && this.zipcode != '' && this.zipcode != null) {
+                this.residence_next_disabled = false;
+            }
         },
         submit: function (event) {
             sessionStorage.setItem("firstName", this.firstName);

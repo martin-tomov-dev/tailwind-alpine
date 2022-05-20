@@ -40,15 +40,15 @@ function form() {
             this.start_date = sessionStorage.getItem("start_date");
             this.end_date = sessionStorage.getItem("end_date");
             this.travel_num = sessionStorage.getItem("travel_num");
-            if (sessionStorage.getItem("email") != 'null') {
-                this.email = sessionStorage.getItem("email");
-            }
-            if (sessionStorage.getItem("birth_month") != 'null') {
-                this.birth_month = sessionStorage.getItem("birth_month");
-            }
-            if (sessionStorage.getItem("birth_date") != 'null') {
-                this.birth_date = sessionStorage.getItem("birth_date");
-            }
+            // if (sessionStorage.getItem("email") != 'null') {
+            //     this.email = sessionStorage.getItem("email");
+            // }
+            // if (sessionStorage.getItem("birth_month") != 'null') {
+            //     this.birth_month = sessionStorage.getItem("birth_month");
+            // }
+            // if (sessionStorage.getItem("birth_date") != 'null') {
+            //     this.birth_date = sessionStorage.getItem("birth_date");
+            // }
             if (sessionStorage.getItem("birth_year") != 'null') {
                 this.birth_year = sessionStorage.getItem("birth_year");
             }

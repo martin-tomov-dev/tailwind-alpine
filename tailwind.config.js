@@ -5,7 +5,8 @@ module.exports = {
       colors: {
         'primary': '#4726d1',
         'second': '#b1acbf',
-        'hover': '#6642fb'
+        'hover': '#6642fb',
+        'main': '#f6edff'
       },
       width: {
         'form-sm': '398px',
